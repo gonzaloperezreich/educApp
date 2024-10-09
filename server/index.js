@@ -24,6 +24,9 @@ app.use('/api/test', test);
 app.use('/api/students', students);
 app.use('/api/testStudents', testStudents);
 
+app.get('/', (req, res) => {
+    res.send('¡Hola, mundo!');
+});
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
