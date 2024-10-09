@@ -9,7 +9,7 @@
       <div v-for="test in testStudentsStore.tests" :key="test.id" class="bg-white p-4 rounded shadow">
         <h2 class="text-xl font-semibold">{{ test.name }}</h2>
         <p class="mt-2">Número de preguntas: {{ test.questions.length }}</p>
-        <button v-if="test.score == null" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" @click="startTest(test.id)">
+        <button v-if="test.score == 'Pendiente'" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" @click="startTest(test.id)">
           Empezar Prueba
         </button>
         <div v-else class="mt-2">

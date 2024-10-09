@@ -88,6 +88,7 @@ const submitTest = async () => {
 
     score.value = correctAnswers;
     await saveScore(correctAnswers);
+    router.push('/landing');
 };
 const saveScore = async (correctAnswers) => {
     const studentId = studentsStore.user.id;
