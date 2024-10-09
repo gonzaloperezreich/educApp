@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Student {
+  id         Int           @id @default(autoincrement())
+  rut        String        @unique
+  name       String
+  password   String  
+  testStudents TestStudent[]
+}
+
+model Test {
+  id           Int           @id @default(autoincrement())
+  name         String
+  score         Int         @default(0) 
+  questions    Question[]
+  testStudents TestStudent[]
+  releaseAnswers Boolean    @default(false)
+}
+
+model Question {
+  id           Int          @id @default(autoincrement())
+  statement    String
+  explanation  String
+  axisType      axisType
+  test         Test         @relation(fields: [testId], references: [id])
+  testId       Int
+  alternatives Alternative[]
+  answers      Answer[]
+}
+
+model Alternative {
+  id         Int      @id @default(autoincrement())
+  content    String
+  correct    Boolean
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
+  answers    Answer[]
+}
+
+model TestStudent {
+  id        Int      @id @default(autoincrement())
+  student   Student  @relation(fields: [studentId], references: [id])
+  studentId Int
+  test      Test     @relation(fields: [testId], references: [id])
+  testId    Int
+  score     Float? 
+  answers   Answer[]
+
+  @@unique([studentId, testId])
+}
+
+
+model Answer {
+  id            Int         @id @default(autoincrement())
+  testStudent   TestStudent @relation(fields: [testStudentId], references: [id])
+  testStudentId Int
+  question      Question    @relation(fields: [questionId], references: [id])
+  questionId    Int
+  alternative   Alternative @relation(fields: [alternativeId], references: [id])
+  alternativeId Int
+
+  @@unique([testStudentId, questionId])
+}
+
+enum axisType {
+  Numeros
+  Geometria
+  AlgebraYFunciones
+  ProbabilidadYEstadisticas
+}
