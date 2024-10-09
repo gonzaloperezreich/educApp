@@ -10,11 +10,13 @@ export const useTestStore = defineStore('test', {
   actions: {
     async fetchAllTests() {
       const { $axios } = useNuxtApp();
+            const apiUrl = useRuntimeConfig().public.apiUrl; 
+ // Usa la variable de entorno
       this.loading = true;
       this.error = null;
 
       try {
-        const response = await $axios.get('http://localhost:4000/api/test/allTests'); 
+        const response = await $axios.get(`${apiUrl}test/allTests`); // Cambia la URL aquí
         this.tests = response.data.tests; 
         return this.tests;
       } catch (error) {
@@ -26,11 +28,13 @@ export const useTestStore = defineStore('test', {
     },
     async fetchTest(id) {
       const { $axios } = useNuxtApp();
+            const apiUrl = useRuntimeConfig().public.apiUrl; 
+ // Usa la variable de entorno
       this.loading = true;
       this.error = null;
 
       try {
-        const response = await $axios.get(`http://localhost:4000/api/test/find/${id}`);
+        const response = await $axios.get(`${apiUrl}test/find/${id}`); // Cambia la URL aquí
         return response.data.test;
       } catch (err) {
         this.error = err.message;
@@ -41,8 +45,11 @@ export const useTestStore = defineStore('test', {
     },
     async saveTestScore({ studentId, testId, score }) {
       const { $axios } = useNuxtApp();
+            const apiUrl = useRuntimeConfig().public.apiUrl; 
+ // Usa la variable de entorno
+
       try {
-        const response = await $axios.post(`http://localhost:4000/api/test/${testId}/score`, {
+        const response = await $axios.post(`${apiUrl}test/${testId}/score`, {
           studentId,
           score,
         });
@@ -54,11 +61,13 @@ export const useTestStore = defineStore('test', {
     },
     async createTest(testData) {
       const { $axios } = useNuxtApp();
+            const apiUrl = useRuntimeConfig().public.apiUrl; 
+ // Usa la variable de entorno
       this.loading = true;
       this.error = null;
 
       try {
-        const response = await $axios.post('http://localhost:4000/api/test', testData);
+        const response = await $axios.post(`${apiUrl}test`, testData); // Cambia la URL aquí
         this.tests.push(response.data);
         return response.data;
       } catch (error) {
@@ -70,10 +79,13 @@ export const useTestStore = defineStore('test', {
     },
     async updateReleaseAnswers(testId) {
       const { $axios } = useNuxtApp();
+            const apiUrl = useRuntimeConfig().public.apiUrl; 
+ // Usa la variable de entorno
       this.loading = true;
       this.error = null;
+
       try {
-        const response = await $axios.patch(`http://localhost:4000/api/test/release/${testId}`);
+        const response = await $axios.patch(`${apiUrl}test/release/${testId}`); // Cambia la URL aquí
         return response.data; 
       } catch (err) {
         this.error = err.message;
@@ -83,9 +95,9 @@ export const useTestStore = defineStore('test', {
       }
     },
     logout() {
-        this.tests = [];
-        this.loading = false;
-        this.error = null;
-      }  
+      this.tests = [];
+      this.loading = false;
+      this.error = null;
+    }  
   },
 });

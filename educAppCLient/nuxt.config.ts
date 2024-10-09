@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
+    // Elimina '@nuxtjs/dotenv'
   ],
   postcss: {
     plugins: {
@@ -14,10 +15,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  hooks: {
-    'render:done': () => {
-      const studentsStore = useStudentsStore();
-      studentsStore.checkAuth();
+  router: {
+    middleware: ['auth'], // Añade tu middleware aquí
+  },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.NUXT_API_URL // Usando la variable de entorno
     }
   }
 });
