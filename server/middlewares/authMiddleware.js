@@ -8,8 +8,8 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, 'tu_secreto'); // Reemplaza 'tu_secreto' con tu clave secreta
-    req.studentId = decoded.id; // Asignamos el ID del estudiante al objeto req
+    const decoded = jwt.verify(token, 'tu_secreto'); 
+    req.studentId = decoded.id; 
     next();
   } catch (error) {
     return res.status(403).json({ error: 'Token inválido' });
