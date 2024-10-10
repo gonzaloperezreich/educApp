@@ -1,9 +1,52 @@
 # educApp
 
-Tarea postulacion Edugami Gonzalo Pérez app deployada en: https://educ-app-htkh.vercel.app/admin
+**Tarea de postulación para Edugami**  
+**Desarrollador:** Gonzalo Pérez  
+**Aplicación desplegada en:** [https://educ-app-htkh.vercel.app/admin](https://educ-app-htkh.vercel.app/admin)
 
-De manera local npm run dev en la raiz de carpeta cliente y carpeta server, no obstante la app ya esta deployada y funciona. Todos pueden logearse como usuarios con clave, rut y nombre para ser estudiantes, aquel profesor que gestiona, crea y todo lo relacionado a las pruebas inicia sesión como: usuario: admin clave:admin Ahí puede ir al panel de admin, crear test y gestionar si se ven o no las respuestas. Puedes crear un usuario y asignarte una prueba, leugo podras responderla y desde admin podrás gestionar ver las respuestas y score
+## Descripción
 
-APP en su primera versión, hay codigo hardcodeado en el back porque tenia problemas con el CORS. No está muy bonito pero esta funcional y cumple con los requisitos. Front: NUXT + store pinia back: Express + prisma BDD: supabase
+**educApp** es una aplicación educativa diseñada para gestionar pruebas y usuarios. Permite a los estudiantes iniciar sesión con su RUT, nombre y contraseña, mientras que los profesores pueden gestionar las pruebas a través de un panel de administración.
 
-Los usuarios de la tarea fueron creados y su RUT y Contraseña son los mismos (hay que escribir manualmente el -)
+## Instalación y Ejecución Local
+
+Para ejecutar la aplicación de manera local, sigue estos pasos:
+
+1. **Clona el repositorio**:
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   ```
+
+2. **Navega a la carpeta del cliente y del servidor** y ejecuta:
+   ```bash
+   npm run dev
+   ```
+
+   Nota: La aplicación ya está desplegada y en funcionamiento, por lo que no es necesario ejecutar estos comandos a menos que desees realizar pruebas locales.
+
+## Acceso a la Aplicación
+
+- Todos los usuarios pueden iniciar sesión como estudiantes con su RUT, nombre y contraseña.
+- El profesor que gestiona la aplicación puede iniciar sesión como administrador utilizando las siguientes credenciales:
+  - **Usuario:** admin  
+  - **Contraseña:** admin  
+
+Desde el panel de administración, el profesor puede crear pruebas y gestionar las respuestas de los estudiantes.
+
+## Funcionalidades
+
+- **Creación de usuarios:** Los usuarios pueden registrarse y asignarse a una prueba.
+- **Gestión de pruebas:** El administrador puede crear pruebas, ver respuestas y puntajes.
+
+## Notas
+
+- Esta es la primera versión de la aplicación. Actualmente, hay código hardcodeado en el backend debido a problemas con CORS.
+- Aunque el diseño podría mejorarse, la aplicación es funcional y cumple con los requisitos especificados.
+- **Tecnologías utilizadas:**
+  - **Frontend:** Nuxt.js con Pinia
+  - **Backend:** Express con Prisma
+  - **Base de Datos:** Supabase
+
+### Usuarios de Prueba
+
+Los usuarios creados para la tarea tienen su RUT y contraseña como la misma combinación. Recuerda escribir manualmente el guion (-) en el RUT al iniciar sesión.
