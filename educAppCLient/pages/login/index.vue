@@ -15,12 +15,12 @@
         </div>
         <div class="mb-6">
           <label for="password" class="block text-gray-700 mb-2">Contraseña</label>
-          <input
-            v-model="password"
-            type="password"
-            id="password"
-            placeholder="Ingrese su contraseña"
-            class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Ingrese su contraseña" 
+            class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500" 
+            autocomplete="current-password"
           />
         </div>
         <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded hover:bg-blue-600">
