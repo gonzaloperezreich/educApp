@@ -5,6 +5,9 @@ const prisma = new PrismaClient();
 const bcrypt = require('bcrypt'); // Asegúrate de haber instalado bcrypt
 const authMiddleware = require('../../middlewares/authMiddleware');
 
+router.get('/testing', (req, res) => {
+    res.send('¡Hola, mundo!');
+  });
 // Ruta para obtener los datos del estudiante autenticado
 router.get('/me', authMiddleware, async (req, res) => {
     try {
