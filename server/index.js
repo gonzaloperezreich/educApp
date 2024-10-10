@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // Durante el desarrollo local
-    'educ-app-htkh.vercel.app' // URL desplegada
+    'https://educ-app-cl-ient-1syj0gvjz-gonzaloperezreichs-projects.vercel.app'
 ],
     credentials: true,
   }));
