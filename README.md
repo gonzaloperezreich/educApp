@@ -10,3 +10,9 @@ Todos pueden logearse como usuarios con clave, rut y nombre para ser estudiantes
  clave:admin
  Ahí puede ir al panel de admin, crear test y gestionar si se ven o no las respuestas.
  Puedes crear un usuario y asignarte una prueba, leugo podras responderla y desde admin podrás gestionar ver las respuestas y score
+
+APP en su primera versión, hay codigo hardcodeado en el back porque tenia problemas con el CORS.
+No está muy bonito pero esta funcional y cumple con los requisitos.
+Front: NUXT + store pinia
+back: Express + prisma 
+BDD: supabase
