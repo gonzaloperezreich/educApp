@@ -13,7 +13,8 @@ app.use(express.json());
 const allowedOrigins = [
   'http://localhost:3000',
   'https://educ-app-cl-ient-1syj0gvjz-gonzaloperezreichs-projects.vercel.app',
-  'https://educ-app-cl-ient-bfylkxt0t-gonzaloperezreichs-projects.vercel.app'
+  'https://educ-app-cl-ient-bfylkxt0t-gonzaloperezreichs-projects.vercel.app',
+  'https://educ-app-htkh.vercel.app',
 ];
 
 app.use(cors({
