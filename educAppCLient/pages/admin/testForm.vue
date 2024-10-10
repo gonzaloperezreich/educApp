@@ -56,13 +56,14 @@
 <script setup>
 import { ref } from 'vue';
 import { useTestStore } from '@/stores/tests';
+import { useRouter } from "vue-router";
 
 const testStore = useTestStore();
 const testName = ref('');
 const questions = ref([{ statement: '', explanation: '', axisType: '', alternatives: [{ content: '', correct: false }], correctAlternative: null }]);
 const successMessage = ref('');
 const errorMessage = ref('');
-
+const router = useRouter();
 const addQuestion = () => {
   questions.value.push({ statement: '', explanation: '', axisType: '', alternatives: [{ content: '', correct: false }], correctAlternative: null });
 };
@@ -97,7 +98,7 @@ const createTest = async () => {
     // Limpiar el formulario
     testName.value = '';
     questions.value = [{ statement: '', explanation: '', axisType: '', alternatives: [{ content: '', correct: false }], correctAlternative: null }];
-    routerKey.push('/admin');
+    router.push('/admin');
   } catch (error) {
     errorMessage.value = 'Error al crear el test. Intenta nuevamente.';
     successMessage.value = '';

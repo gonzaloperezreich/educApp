@@ -32,8 +32,7 @@ export const useStudentsStore = defineStore('students', {
     async registerStudent(studentData) {
       const { $axios } = useNuxtApp();
       const apiUrl = useRuntimeConfig().public.apiUrl; 
-      console.log(apiUrl);
- // Usa la variable de entorno
+      // Usa la variable de entorno
 
       this.loading = true;
       this.error = null;
@@ -51,8 +50,6 @@ export const useStudentsStore = defineStore('students', {
     async loginStudent(credentials) {
       const { $axios } = useNuxtApp();
       const apiUrl = useRuntimeConfig().public.apiUrl; 
-      console.log(apiUrl);
-
       this.loading = true;
       this.error = null;
 
