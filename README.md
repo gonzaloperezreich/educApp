@@ -16,3 +16,6 @@ No está muy bonito pero esta funcional y cumple con los requisitos.
 Front: NUXT + store pinia
 back: Express + prisma 
 BDD: supabase
+
+
+Los usuarios de la tarea fueron creados y su RUT y Contraseña son los mismos (hay que escribir manualmente el -)
