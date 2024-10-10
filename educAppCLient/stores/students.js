@@ -50,7 +50,6 @@ export const useStudentsStore = defineStore('students', {
     async loginStudent(credentials) {
       const { $axios } = useNuxtApp();
       const apiUrl = useRuntimeConfig().public.apiUrl; 
-      console.log(apiUrl);
       this.loading = true;
       this.error = null;
 
