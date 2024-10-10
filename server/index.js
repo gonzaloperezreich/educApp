@@ -1,15 +1,14 @@
-const { PrismaClient } = require('@prisma/client');
-const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 4000;
-const prisma = new PrismaClient();
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+const { PrismaClient } = require('@prisma/client');
+const { createClient } = require('@supabase/supabase-js');
 const cors = require('cors');
 
-app.use(express.json());
+const app = express();
+const prisma = new PrismaClient();
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
+// Configurar CORS para los orígenes permitidos
 const allowedOrigins = [
   'https://educ-app-htkh.vercel.app',
   'http://localhost:3000',
@@ -19,29 +18,18 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    console.log('Request origin:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204
 }));
-app.use((req, res, next) => {
-  res.setHeader('Permissions-Policy', ''); // Empty value to avoid trial-controlled features
-  next();
-});
-// Log all requests
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
 
+app.use(express.json()); // Middleware para JSON
+
+// Rutas
 const students = require('./src/routes/students');
 const test = require('./src/routes/test');
 const testStudents = require('./src/routes/testStudents');
@@ -50,6 +38,7 @@ app.use('/api/test', test);
 app.use('/api/students', students);
 app.use('/api/testStudents', testStudents);
 
+// Ruta raíz
 app.get('/', (req, res) => {
   res.send('¡Hola, mundo!');
 });
@@ -60,6 +49,8 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
+// Iniciar el servidor
+const PORT = process.env.PORT || 4000; // Solo para entorno local
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
