@@ -9,6 +9,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANO
 const cors = require('cors');
 
 app.use(express.json());
+
 const allowedOrigins = [
   'http://localhost:3000',
   'https://educ-app-cl-ient-1syj0gvjz-gonzaloperezreichs-projects.vercel.app',
@@ -23,8 +24,13 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));
     }
   },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
+
 const students = require('./src/routes/students');
 const test = require('./src/routes/test');
 const testStudents = require('./src/routes/testStudents');
@@ -34,8 +40,9 @@ app.use('/api/students', students);
 app.use('/api/testStudents', testStudents);
 
 app.get('/', (req, res) => {
-    res.send('¡Hola, mundo!');
+  res.send('¡Hola, mundo!');
 });
+
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
