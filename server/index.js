@@ -18,6 +18,7 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
+    console.log('Request origin:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -31,6 +32,12 @@ app.use(cors({
   optionsSuccessStatus: 204
 }));
 
+// Log all requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
 const students = require('./src/routes/students');
 const test = require('./src/routes/test');
 const testStudents = require('./src/routes/testStudents');
@@ -41,6 +48,12 @@ app.use('/api/testStudents', testStudents);
 
 app.get('/', (req, res) => {
   res.send('¡Hola, mundo!');
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(PORT, () => {
