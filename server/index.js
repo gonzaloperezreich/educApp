@@ -31,7 +31,10 @@ app.use(cors({
   preflightContinue: false,
   optionsSuccessStatus: 204
 }));
-
+app.use((req, res, next) => {
+  res.setHeader('Permissions-Policy', ''); // Empty value to avoid trial-controlled features
+  next();
+});
 // Log all requests
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
