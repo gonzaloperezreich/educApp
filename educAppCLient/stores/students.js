@@ -31,7 +31,8 @@ export const useStudentsStore = defineStore('students', {
 
     async registerStudent(studentData) {
       const { $axios } = useNuxtApp();
-            const apiUrl = useRuntimeConfig().public.apiUrl; 
+      const apiUrl = useRuntimeConfig().public.apiUrl; 
+      console.log(apiUrl);
  // Usa la variable de entorno
 
       this.loading = true;

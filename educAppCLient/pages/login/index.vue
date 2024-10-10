@@ -16,6 +16,7 @@
         <div class="mb-6">
           <label for="password" class="block text-gray-700 mb-2">Contraseña</label>
           <input 
+            v-model="password" 
             type="password" 
             id="password" 
             placeholder="Ingrese su contraseña" 
@@ -60,6 +61,8 @@ const handleLogin = async () => {
   loading.value = true; // Activa el loading
 
   try {
+    console.log(rut.value, 'rut');
+    console.log(password.value, 'password');
     const response = await studentsStore.loginStudent({ rut: rut.value, password: password.value });
     if (response.pass) {
       await router.push('/landing');
