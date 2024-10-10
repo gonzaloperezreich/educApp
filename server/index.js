@@ -10,32 +10,7 @@ const cors = require('cors');
 
 app.use(express.json());
 
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://educ-app-cl-ient-1syj0gvjz-gonzaloperezreichs-projects.vercel.app',
-  'https://educ-app-cl-ient-bfylkxt0t-gonzaloperezreichs-projects.vercel.app',
-  'https://educ-app-htkh.vercel.app',
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    console.log('Request origin:', origin);
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-}));
-app.use((req, res, next) => {
-  res.setHeader('Permissions-Policy', ''); // Empty value to avoid trial-controlled features
-  next();
-});
+app.use(cors());
 // Log all requests
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
