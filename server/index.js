@@ -9,13 +9,22 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANO
 const cors = require('cors');
 
 app.use(express.json());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://educ-app-cl-ient-1syj0gvjz-gonzaloperezreichs-projects.vercel.app',
+  'https://educ-app-cl-ient-bfylkxt0t-gonzaloperezreichs-projects.vercel.app'
+];
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000', // Durante el desarrollo local
-    'https://educ-app-cl-ient-1syj0gvjz-gonzaloperezreichs-projects.vercel.app'
-],
-    credentials: true,
-  }));
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 const students = require('./src/routes/students');
 const test = require('./src/routes/test');
 const testStudents = require('./src/routes/testStudents');
