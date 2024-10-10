@@ -61,8 +61,6 @@ const handleLogin = async () => {
   loading.value = true; // Activa el loading
 
   try {
-    console.log(rut.value, 'rut');
-    console.log(password.value, 'password');
     const response = await studentsStore.loginStudent({ rut: rut.value, password: password.value });
     if (response.pass) {
       await router.push('/landing');
@@ -72,17 +70,17 @@ const handleLogin = async () => {
   } catch (err) {
     error.value = 'Error al iniciar sesión. Por favor, intente nuevamente.';
   } finally {
-    loading.value = false; // Desactiva el loading
+    loading.value = false;
   }
 };
 
 onMounted(async () => {
-  loading.value = true; // Activa el loading al iniciar la verificación
+  loading.value = true; 
   await studentsStore.checkAuth();
   if (studentsStore.isAuthenticated) {
     router.push('/landing');
   }
-  loading.value = false; // Desactiva el loading al terminar la verificación
+  loading.value = false; 
 });
 </script>
 
