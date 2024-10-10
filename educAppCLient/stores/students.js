@@ -13,14 +13,14 @@ export const useStudentsStore = defineStore('students', {
   actions: {
     async fetchStudents() {
       const { $axios } = useNuxtApp();
-            const apiUrl = useRuntimeConfig().public.apiUrl; 
+      const apiUrl = useRuntimeConfig().public.apiUrl; 
  // Usa la variable de entorno
 
       this.loading = true;
       this.error = null;
 
       try {
-        const response = await $axios.get(`${apiUrl}students`); // Cambia la URL aquí
+        const response = await $axios.get(`${apiUrl}students`); 
         this.students = response.data;
       } catch (err) {
         this.error = err.message;
@@ -50,6 +50,8 @@ export const useStudentsStore = defineStore('students', {
     async loginStudent(credentials) {
       const { $axios } = useNuxtApp();
       const apiUrl = useRuntimeConfig().public.apiUrl; 
+      console.log(apiUrl);
+
       this.loading = true;
       this.error = null;
 
