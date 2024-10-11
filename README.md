@@ -35,8 +35,8 @@ Desde el panel de administración, el profesor puede crear pruebas y gestionar l
 
 ## Funcionalidades
 
-- **Creación de usuarios:** Los usuarios pueden registrarse y asignarse a una prueba.
-- **Gestión de pruebas:** El administrador puede crear pruebas, ver respuestas y puntajes.
+- **Creación de usuarios:** Los usuarios pueden registrarse y observar sus pruebas asignadas
+- **Gestión de pruebas:** El administrador puede crear pruebas, ver cantidad de respuestas y gestionar asignación de pruebas.
 
 ## Notas
 
