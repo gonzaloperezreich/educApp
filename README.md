@@ -52,5 +52,10 @@ Desde el panel de administración, el profesor puede crear pruebas y gestionar l
 Los usuarios creados para la tarea tienen su RUT y contraseña como la misma combinación. Recuerda escribir manualmente el guion (-) en el RUT al iniciar sesión.
 
 
-### supuestos:
+### Supuestos:
 -las preguntas tienen score 1
+
+
+### Con respecto al feedback:
+Me hubiese gustado haberlo conectado con una api de GPT o IA que hiciera recomendaciones de ejercicios dada el área que fallaba, esto se podria gestionar con que la misma IA utilizara el endpoint para crear test y genere un test recuperativo para poder mejorar.
+No logré alcanzar a hacer aquello pues luché con el deploy de vercel que me daba muchos problemas con el CORS en el backend
