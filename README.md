@@ -50,3 +50,7 @@ Desde el panel de administración, el profesor puede crear pruebas y gestionar l
 ### Usuarios de Prueba
 
 Los usuarios creados para la tarea tienen su RUT y contraseña como la misma combinación. Recuerda escribir manualmente el guion (-) en el RUT al iniciar sesión.
+
+
+### supuestos:
+-las preguntas tienen score 1
